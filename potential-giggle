@@ -1,0 +1,13 @@
+if newState.selectedPointsIDs.isEmpty,
+           let dependencies = state.collage.dependencies.first(where: {
+               $0.pointIDs.contains(pointID)
+           }) {
+            newState.selectedPointsIDs.formUnion(dependencies.pointIDs)
+        }
+        
+        newState.selectedPointsIDs.update(with: pointID)
+        
+        return newState
+    }
+    
+    private func onTwoFingersTranslate(_ gestureState: 
